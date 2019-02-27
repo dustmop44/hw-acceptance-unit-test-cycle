@@ -9,6 +9,18 @@
   %li
     Released on:
     = @movie.release_date.strftime("%B %d, %Y")
+  %li
+    Directed by:
+    - if @movie.director.nil?
+      Unknown
+    -else 
+      = @movie.director
+    %br
+    =link_to 'Find Movies With Same Director', movies_find_by_director_path(movie: @movie), id: "same_director"
+-if @similar_movies.nil?
+  No similar movies
+-else
+  =render 'find_by_director'
 
 %h4 Description:
 

@@ -20,6 +20,8 @@ module NavigationHelpers
     #
     #   when /^(.*)'s profile page$/i
     #     user_profile_path(User.find_by_login($1))
+    when /^the (.*) page for "(.*)"$/ then
+      '/movies/' + (Movie.find_by_title($2).id.to_s) + (($1 == "edit") ? "/edit" : "")
 
     else
       begin
